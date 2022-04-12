@@ -19,3 +19,11 @@ def addProject_view(request):
     }
 
     return render(request, "statApp/add.html", context)
+
+
+def history_view(request):
+    projects = Project.objects.all()
+    context = {
+        'projects': projects
+    }
+    return render(request, 'statApp/history.html', context)
