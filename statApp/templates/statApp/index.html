@@ -1,4 +1,12 @@
-<h1>
-    {{projectLast.nameProject}}
-</h1>
-<p>{{projectLast.projectProgress}}</p>
+<div>
+
+    <header>
+        <a href="{% url 'history' %}">Historique</a>
+        <a href="{% url 'login' %}">Login</a>
+    </header>
+
+    <h1>
+        {{projectLast.nameProject}}
+    </h1>
+    <p>{{projectLast.projectProgress}}</p>
+</div>

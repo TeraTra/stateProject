@@ -1,14 +1,25 @@
-<h2>ADD project</h2>
-{% block content %}
-<form method="post" action="">
-    {%csrf_token%}
-
-    <table>
-        {{forms}}
+<div>
+    <header>
+        <h2>ADD project</h2>
+        <a href="">
+            <button>
+                change Progress
+            </button>
+        </a>
+    </header>
+    
+    {% block content %}
+    <form method="post" action="">
+        {%csrf_token%}
+    
+        <table>
+            {{forms}}
         </table>
-        
+            
         <input type="submit" value="Ajouter"/>
-
-</form>
-
-{% endblock %}
+    
+    </form>
+    
+    {% endblock %}
+    
+</div>

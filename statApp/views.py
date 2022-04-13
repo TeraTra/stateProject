@@ -11,17 +11,14 @@ def index_view(request):
 
 
 def addProject_view(request):
-    if not request.user.is_authenticated:
-        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
+    form = ProjectForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('/home/')
     else:
-        form = ProjectForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('/home/')
-        else:
-            form = ProjectForm()
-        context = {
-            'forms':form,
+        form = ProjectForm()
+    context = {
+        'forms':form,
         }
 
     return render(request, "statApp/add.html", context)
@@ -33,3 +30,7 @@ def history_view(request):
         'projects': projects
     }
     return render(request, 'statApp/history.html', context)
+
+
+
+
