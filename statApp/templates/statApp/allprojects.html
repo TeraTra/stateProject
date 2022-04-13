@@ -1,4 +1,11 @@
 <div>
+    <header>
+        <a href="{% url 'ajout' %}">
+            <button>
+                Ajouter
+            </button>
+        </a>
+    </header>
     <ul>
         {% for project in projects %}
             <li>
@@ -6,7 +13,9 @@
                     <div>{{project.nameProject}}</div> 
                 </a>
                 <div>{{project.projectProgress}}</div> 
-                <div>{{project.link_site}}</div></br>
+                <a href="{{project.link_site}}" target="_blank">
+                    <div>site web</div>
+                </a></br>
             </li> 
         {%endfor%}  
     </ul>
