@@ -1,0 +1,13 @@
+<div>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <a href="{% url 'update' project.id %}">
+                    <div>{{project.nameProject}}</div> 
+                </a>
+                <div>{{project.projectProgress}}</div> 
+                <div>{{project.link_site}}</div></br>
+            </li> 
+        {%endfor%}  
+    </ul>
+</div>

@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Project
 from .forms import ProjectForm
-from django.contrib.auth.decorators import login_required
-from django.conf import settings
 
 # Create your views here.
 def index_view(request):
@@ -30,6 +28,38 @@ def history_view(request):
         'projects': projects
     }
     return render(request, 'statApp/history.html', context)
+
+
+def update_view(request, project_id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(Project, pk = project_id)
+ 
+    # pass the object as instance in form
+    form = ProjectForm(request.POST or None, instance = obj)
+ 
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return redirect("allProjects")
+ 
+    # add form dictionary to context
+    context["form"] = form
+ 
+    return render(request, "statApp/update.html", context)
+
+
+def allProject_views(request):
+    projects = Project.objects.all()
+    context = {
+        'projects': projects
+    }
+    return render(request, 'statApp/allprojects.html', context)
+
 
 
 
