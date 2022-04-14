@@ -1,19 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="formulaire">
+        <form id="login-form" method="post" 
+                action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="sec">
+                <div>
+                    <label for="id_username">Username</label> </br>
+                    <input name="username" type="text" class="butLog">
+                </div>
 
-{% block content %}
-<form method="post" >
-    {% csrf_token %}
-    <table>
-    <tr>
-        <td>{{ form.username.label_tag }}</td>
-        <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-        <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
-    </tr>
-    </table>
-    
-    <input type="submit" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
-{% endblock %}
+                <div class="password">
+                    <label for="id_password">Password</label></br>
+                    <input id="id_password" name="password" type="password" class="butLog">
+                </div>
+            </div>
+            {% if form.errors %}
+                <p class="lab_error">
+                    Votre username ou password n'est pas correcte. 
+                </p>
+            {% endif %}
+
+            <input type="submit" value="Login" class="log" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
+</body>
+</html>
+
+<!-- le style de la page --> 
+<style>
+body{
+        background-color: #283747;
+        font-size: larger;
+        font-family: Helvetica, sans-serif;
+        color: #95A5A6;
+        text-align: center;
+    }
+
+.log{
+    background-color: #28B463;
+    padding: 0.5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: none;
+    border-radius: 2%;
+    margin-top: 2%;
+    color: #424949;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.formulaire{
+    margin-top: 10%;
+}
+
+.butLog{
+    padding: 0.5%;
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+}
+
+.password{
+    margin-top: 2%;
+}
+</style>

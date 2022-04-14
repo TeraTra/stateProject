@@ -3,11 +3,14 @@ from .models import Project
 from .forms import ProjectForm
 
 # Create your views here.
+
+#view for page home 
 def index_view(request):
     lastProject = Project.objects.last()
     return render(request, 'statApp/index.html', {'projectLast': lastProject})
 
 
+#view for page add
 def addProject_view(request):
     form = ProjectForm(request.POST)
     if form.is_valid():
@@ -30,6 +33,7 @@ def history_view(request):
     return render(request, 'statApp/history.html', context)
 
 
+#view for page update
 def update_view(request, project_id):
     # dictionary for initial data with
     # field names as keys
@@ -53,6 +57,7 @@ def update_view(request, project_id):
     return render(request, "statApp/update.html", context)
 
 
+#view for page allprojects
 def allProject_views(request):
     projects = Project.objects.all()
     context = {
