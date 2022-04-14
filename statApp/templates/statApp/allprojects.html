@@ -1,22 +1,96 @@
-<div>
-    <header>
-        <a href="{% url 'ajout' %}">
-            <button>
-                Ajouter
-            </button>
-        </a>
-    </header>
-    <ul>
-        {% for project in projects %}
-            <li>
-                <a href="{% url 'update' project.id %}">
-                    <div>{{project.nameProject}}</div> 
-                </a>
-                <div>{{project.projectProgress}}</div> 
-                <a href="{{project.link_site}}" target="_blank">
-                    <div>site web</div>
-                </a></br>
-            </li> 
-        {%endfor%}  
-    </ul>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div>
+        <header>
+            <a href="{% url 'ajout' %}" >
+                <button class="bout">
+                    Ajouter
+                </button>
+            </a>
+        </header>
+        <ul>
+            {% for project in projects %}
+                <li>
+                    <a href="{% url 'update' project.id %}">
+                        <h3>{{project.nameProject}}</h3> 
+                    </a>
+                    <div>{{project.projectProgress}}</div> 
+                    <a href="{{project.link_site}}" target="_blank">
+                        <div>site web</div>
+                    </a></br>
+                </li> 
+            {%endfor%}  
+        </ul>
+    </div>
+</body>
+</html>
+
+<!-- le style de la page --> 
+<style>
+    body{
+        background-color: #283747;
+        font-size: larger;
+        font-family: Helvetica, sans-serif;
+        color: #28B463;
+        font-size: 20px;
+
+    }
+
+    ul{
+        list-style: none;
+        text-align: center;
+        font-size: larger;
+    }
+
+    .name{
+        padding-left: 5%;
+        margin-top: 4.5%;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    a{
+        text-decoration: none;
+        color: #28B463;
+
+    }
+
+    a:hover{
+        color: #196F3D;
+    }
+
+    .progress{
+        margin-bottom: 1%;
+    }
+
+    li{
+        margin-bottom: 3%;
+        border: solid 5px #85929E;
+        margin-left: 25%;
+        margin-right:25% ;
+    }
+
+    .bout{
+        background-color: #28B463;
+        padding: 0.5%;
+        padding-left: 2%;
+        padding-right: 2%;
+        border: none;
+        border-radius: 2%;
+        margin-top: 1.5%;
+        color: #424949;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    header{
+        text-align: end;
+        padding-right: 5%;
+    }
+</style>
